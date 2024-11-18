@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AG_15_DS.MainPage">
+   
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="Black" Offset="0.5" />
+            <GradientStop Color="Blue" Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+    <VerticalStackLayout>
+        
+        <Frame BackgroundColor="Transparent"
+               BorderColor="White"
+               HorizontalOptions="CenterAndExpand"
+               Margin="20"
+               WidthRequest="500"
+               HeightRequest="1100">
+
+            <VerticalStackLayout VerticalOptions="Center">
+                <Label Text="Descrição do evento: "
+                       TextTransform="Uppercase"
+                       Margin="10"/>
+                <Entry BackgroundColor="White" x:Name="ent_descricao" Placeholder="Nome do evento" Margin="10"/>
+                <Label Text="Localização do Evento: "
+       TextTransform="Uppercase"
+       Margin="10"/>
+                <Entry BackgroundColor="White" x:Name="ent_localizacao" Placeholder="local do evento" Margin="10"/>
+
+                <Frame BackgroundColor="White" Margin="10">
+
+                    <HorizontalStackLayout>
+
+                        <Grid RowDefinitions="auto,auto" ColumnDefinitions="*,*,2*">
+                            <Label Grid.Row="0" Grid.Column="0"
+               Text="Participantes: "
+               TextTransform="Uppercase"
+               Margin="10"/>
+                            <Label Grid.Row="0" Grid.Column="1"
+               Text="{Binding Source={x:Reference stp_participantes}, Path=Value}"
+               Margin="10"/>
+                            <Stepper Grid.Row="0" Grid.Column="2"
+                 x:Name="stp_participantes"
+                 Maximum="50"
+                 Minimum="1"
+                 Increment="1"></Stepper>
+                        </Grid>
+                    </HorizontalStackLayout>
+                </Frame>
+                
+                <Label Text="Data de Inicio"
+        Margin="10"
+        TextTransform="Uppercase"/>
+                <Frame BackgroundColor="Transparent" BorderColor="White">
+                    <DatePicker x:Name="dtpk_inicio" BackgroundColor="White"/>
+                </Frame>
+
+                <Label Text="Data do Termino" 
+        Margin="10"
+        TextTransform="Uppercase"/>
+                <Frame BackgroundColor="Transparent" BorderColor="White">
+                    <DatePicker x:Name="dtpk_fim" BackgroundColor="White"/>
+                </Frame>
+                <Button Text="Enviar"
+                        Margin="10"
+                        BackgroundColor="White"
+                        TextColor="Black"
+                        TextTransform="Uppercase"
+                        FontSize="20"
+                        Clicked="Button_Clicked"/>
+
+            </VerticalStackLayout>
+           
+        </Frame>
+    </VerticalStackLayout>
+
+</ContentPage>
